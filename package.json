@@ -1,11 +1,4 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mongodb": "^5.1.0",
-    "nodemon": "^2.0.21"
-  },
   "name": "back_end",
   "version": "1.0.0",
   "main": "Index.js",
@@ -25,5 +18,11 @@
     "url": "https://github.com/texiumsolutions/Texium_Migration_Server/issues"
   },
   "homepage": "https://github.com/texiumsolutions/Texium_Migration_Server#readme",
-  "description": ""
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.1.0",
+    "node": "^19.6.1",
+    "nodemon": "^2.0.21"
+  }
 }
