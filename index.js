@@ -23,7 +23,7 @@ async function run() {
     const fileCollection = database.collection("sourceFileInfo");
 
     app.get("/sourceFileInfo", async (request, response) => {
-      const query = { "Full Name": "Kai Le" };
+      const query = {};
       const cursor = fileCollection.find(query);
       const fileInfo = await cursor.toArray();
       response.send(fileInfo);
