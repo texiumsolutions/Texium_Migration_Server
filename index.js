@@ -19,10 +19,16 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     const database = client.db("Texium_Migration");
-    const users = database.collection("user");
+    const user = database.collection("user");
     const fileCollection = database.collection("sourceFileInfo");
 
     app.get("/sourceFileInfo", async (request, response) => {
+      const query = {};
+      const cursor = fileCollection.find(query);
+      const fileInfo = await cursor.toArray();
+      response.send(fileInfo);
+    });
+    app.get("/user", async (request, response) => {
       const query = {};
       const cursor = fileCollection.find(query);
       const fileInfo = await cursor.toArray();
