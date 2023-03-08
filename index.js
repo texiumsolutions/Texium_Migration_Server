@@ -39,7 +39,6 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     const database = client.db("Texium_Migration");
-    const users = database.collection("user");
     const fileCollection = database.collection("sourceFileInfo");
 
     app.use("/static", express.static("uploads"));
@@ -116,6 +115,9 @@ async function run() {
       const fileInfo = await cursor.toArray();
       response.send(fileInfo);
     });
+
+
+    
 
     console.log("Connected Before You Asked!");
   } finally {
