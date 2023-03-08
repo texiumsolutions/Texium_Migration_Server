@@ -1,0 +1,38 @@
+Excel Skills | Exercises | Pivot Tables,,www.excel-skills.com
+Instructions,,
+Versions: Excel 2010 & Excel 2007,,
+,,
+Our practical Excel exercises are much more than just exercises! We design our exercises in such a way that they provide the user with a mapping of the Excel features that can be used in order to complete the appropriate task in the most efficient manner possible. We also reference each step in each exercise to the appropriate tutorial that needs to be studied in order to be able to complete the step.,,
+,,
+"The solutions to our comprehensive exercises are only available to customers who have purchased either a full or training membership. If you have not purchased a membership, we unfortunately cannot provide you with any of the solutions or assist you with any of the steps that are included in the appropriate exercise.",,
+,,
+"Start the exercise by saving the workbook on your system, then complete step number 1 and each subsequent step in the order as listed on this sheet before comparing your workbook to the solution that we have provided.",,
+,,
+Step,Task,Tutorial
+1,Open the Expenses sheet and note that one of the column headings is blank - we will not be able to create a pivot table which includes all the data on the Expenses sheet if one of the field names that need to be used in our pivot table is blank. Select cell F4 and enter the following heading for the column: Tax Code,Pivot Tables & Pivot Charts : Source Data Layout
+2,"Insert the data on the Expenses sheet into an Excel table. If the source data of a pivot table is included in an Excel table, you will not have to edit the source data cell range of the pivot table when you add additional transactions at the bottom of the Expenses sheet.",Excel Tables : Insert Table
+3,Change the table name to: ExpTable,Excel Tables : About Excel Tables
+4,Create a pivot table on a new worksheet which is based on all the cells that have been inserted into the new Excel table. Use the pivot table to display the total tax inclusive amount for each supplier that is included in our source data.,Pivot Tables & Pivot Charts : Create a Pivot Table
+5,Rename the new sheet as: Suppliers,Worksheets : Rename
+6,Change the number formatting in the amount section of the pivot table so that all the amounts include thousands separators and two decimal numbers. Use the pivot table feature for this purpose so that the new number formatting is retained after the pivot table is refreshed.,Pivot Tables & Pivot Charts : Pivot Table Format Values
+7,Change the column width of column B to 16.,Row / Column Formatting : Format Column Width
+8,Wrap the column heading in column B so that it is displayed in two lines and center the text.,Format Cells : Wrapping Text
+9,Change the pivot table settings so that the adjusted column width is retained after refreshing the pivot table.,Pivot Tables & Pivot Charts : Pivot Table Column Width
+10,"Open the Expenses sheet and change the amount in row 16 from 13,000 to 33,000.",Edit Data : Edit Data
+11,Open the Suppliers sheet and note the grand total at the bottom of the pivot table. Refresh the pivot table and note the change in the grand total.,Pivot Tables & Pivot Charts : Refresh a Pivot Table
+12,Change the order of the supplier names in column A so that the suppliers are sorted in a descending order (from Z to A).,Pivot Tables & Pivot Charts : Filter Pivot Table Data
+13,Drill down to the source data that makes up the supplier total for the IAS Accountants supplier.,Pivot Tables & Pivot Charts : Pivot Table Data Drill-Down
+14,Rename the new sheet as: IAS,Worksheets : Rename
+15,Open the Expenses sheet and create another pivot table which reflects an expense total (tax inclusive amount) for each of the payment dates that are included in column I.,Pivot Tables & Pivot Charts : Create a Pivot Table
+16,Rename the new sheet as: Payments,Worksheets : Rename
+17,Complete steps 6 to 9 for the Payments sheet.,
+18,Filter the pivot table so that only payment dates on or after 1 January 2012 is displayed.,Pivot Tables & Pivot Charts : Filter Pivot Table Data
+19,Change the layout of the pivot table so that the individual bank codes are included in separate columns in the pivot table.,Pivot Tables & Pivot Charts : Change Pivot Table Layout
+20,Adjust the column widths of all the columns that are included in the pivot table to 16.,Row / Column Formatting : Format Column Width
+21,Change the formatting style of the pivot table to Pivot Style Medium 20 (Tip: Hover your mouse over the appropriate image in the Pivot Table Styles section of the appropriate ribbon tab in order to display a description for each of the pivot table styles).,Pivot Tables & Pivot Charts : Pivot Table Tools Tab
+,The following steps only apply to Excel 2010 users - Excel 2007 users can save the workbook and compare it to the solution that we've provided.,
+22,Open the Suppliers sheet and insert a pivot table slicer which is based on the account code field.,Pivot Table Slicers : Create a Slicer
+23,Change the layout of the slicer so that it includes three columns of filter buttons. Increase the width of the slicer so that all the filter buttons are displayed properly.,Pivot Table Slicers : Format Slicers
+24,Change the formatting style of the slicer to Slicer Style Dark 2 (Tip: Hover your mouse over the appropriate image in the Slicer Styles section of the appropriate ribbon tab in order to display a description for each of the slicer styles).,Pivot Table Slicers : Format Slicers
+25,Filter the pivot table data with the slicer so that the supplier totals for only expenses that have been allocated to account IS-375 or account IS-390 are displayed in the pivot table.,Pivot Table Slicers : Using Slicers
+26,Save the workbook and compare your workbook to the solution that we've provided.,
