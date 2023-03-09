@@ -1,0 +1,287 @@
+Category,Product,Sales,Quarter
+Beverages,Chai,$705.60,Qtr 1
+Beverages,Chai,$878.40,Qtr 2
+Beverages,Chai,"$1,174.50",Qtr 3
+Beverages,Chai,"$2,128.50",Qtr 4
+Beverages,Chang,"$2,720.80",Qtr 1
+Beverages,Chang,$228.00,Qtr 2
+Beverages,Chang,"$2,061.50",Qtr 3
+Beverages,Chang,"$2,028.25",Qtr 4
+Beverages,Chartreuse verte,$590.40,Qtr 1
+Beverages,Chartreuse verte,$360.00,Qtr 2
+Beverages,Chartreuse verte,"$1,100.70",Qtr 3
+Beverages,Chartreuse verte,"$2,424.60",Qtr 4
+Beverages,Côte de Blaye,"$25,127.36",Qtr 1
+Beverages,Côte de Blaye,"$12,806.10",Qtr 2
+Beverages,Côte de Blaye,"$7,312.12",Qtr 3
+Beverages,Côte de Blaye,"$1,317.50",Qtr 4
+Beverages,Guaraná Fantástica,$529.20,Qtr 1
+Beverages,Guaraná Fantástica,$467.55,Qtr 2
+Beverages,Guaraná Fantástica,$219.37,Qtr 3
+Beverages,Guaraná Fantástica,$337.50,Qtr 4
+Beverages,Ipoh Coffee,"$1,398.40",Qtr 1
+Beverages,Ipoh Coffee,"$4,496.50",Qtr 2
+Beverages,Ipoh Coffee,"$1,196.00",Qtr 3
+Beverages,Ipoh Coffee,"$3,979.00",Qtr 4
+Beverages,Lakkalikööri,"$1,141.92",Qtr 1
+Beverages,Lakkalikööri,"$1,774.08",Qtr 2
+Beverages,Lakkalikööri,"$3,261.60",Qtr 3
+Beverages,Lakkalikööri,"$1,705.50",Qtr 4
+Beverages,Laughing Lumberjack Lager,$518.00,Qtr 2
+Beverages,Laughing Lumberjack Lager,$350.00,Qtr 3
+Beverages,Laughing Lumberjack Lager,$42.00,Qtr 4
+Beverages,Outback Lager,"$1,508.40",Qtr 1
+Beverages,Outback Lager,$384.00,Qtr 2
+Beverages,Outback Lager,"$1,252.50",Qtr 3
+Beverages,Outback Lager,"$2,683.50",Qtr 4
+Beverages,Rhönbräu Klosterbier,$214.52,Qtr 1
+Beverages,Rhönbräu Klosterbier,"$1,508.92",Qtr 2
+Beverages,Rhönbräu Klosterbier,"$1,233.80",Qtr 3
+Beverages,Rhönbräu Klosterbier,"$1,233.80",Qtr 4
+Beverages,Sasquatch Ale,$179.20,Qtr 1
+Beverages,Sasquatch Ale,"$1,037.40",Qtr 2
+Beverages,Sasquatch Ale,$750.40,Qtr 4
+Beverages,Steeleye Stout,"$1,742.40",Qtr 1
+Beverages,Steeleye Stout,"$1,008.00",Qtr 2
+Beverages,Steeleye Stout,"$1,683.00",Qtr 3
+Beverages,Steeleye Stout,"$1,273.50",Qtr 4
+Condiments,Aniseed Syrup,$544.00,Qtr 1
+Condiments,Aniseed Syrup,$600.00,Qtr 2
+Condiments,Aniseed Syrup,$140.00,Qtr 3
+Condiments,Aniseed Syrup,$440.00,Qtr 4
+Condiments,Chef Anton's Cajun Seasoning,$225.28,Qtr 1
+Condiments,Chef Anton's Cajun Seasoning,"$2,970.00",Qtr 2
+Condiments,Chef Anton's Cajun Seasoning,"$1,337.60",Qtr 3
+Condiments,Chef Anton's Cajun Seasoning,$682.00,Qtr 4
+Condiments,Chef Anton's Gumbo Mix,$288.22,Qtr 3
+Condiments,Chef Anton's Gumbo Mix,$85.40,Qtr 4
+Condiments,Genen Shouyu,$176.70,Qtr 2
+Condiments,Genen Shouyu,"$1,298.12",Qtr 3
+Condiments,Grandma's Boysenberry Spread,"$1,750.00",Qtr 3
+Condiments,Grandma's Boysenberry Spread,$750.00,Qtr 4
+Condiments,Gula Malacca,"$1,994.85",Qtr 1
+Condiments,Gula Malacca,"$1,753.62",Qtr 2
+Condiments,Gula Malacca,"$1,093.09",Qtr 3
+Condiments,Gula Malacca,"$1,701.87",Qtr 4
+Condiments,Louisiana Fiery Hot Pepper Sauce,"$1,347.36",Qtr 1
+Condiments,Louisiana Fiery Hot Pepper Sauce,"$2,150.77",Qtr 2
+Condiments,Louisiana Fiery Hot Pepper Sauce,"$1,975.54",Qtr 3
+Condiments,Louisiana Fiery Hot Pepper Sauce,"$3,857.41",Qtr 4
+Condiments,Louisiana Hot Spiced Okra,$816.00,Qtr 1
+Condiments,Louisiana Hot Spiced Okra,"$1,224.00",Qtr 2
+Condiments,Louisiana Hot Spiced Okra,$918.00,Qtr 4
+Condiments,Northwoods Cranberry Sauce,"$1,300.00",Qtr 2
+Condiments,Northwoods Cranberry Sauce,"$2,960.00",Qtr 4
+Condiments,Original Frankfurter grüne Soße,"$1,112.80",Qtr 1
+Condiments,Original Frankfurter grüne Soße,"$1,027.78",Qtr 2
+Condiments,Original Frankfurter grüne Soße,"$2,255.50",Qtr 3
+Condiments,Original Frankfurter grüne Soße,$510.90,Qtr 4
+Condiments,Sirop d'érable,"$2,679.00",Qtr 1
+Condiments,Sirop d'érable,"$1,881.00",Qtr 2
+Condiments,Sirop d'érable,"$3,021.00",Qtr 3
+Condiments,Sirop d'érable,"$1,510.50",Qtr 4
+Condiments,Vegie-spread,"$3,202.87",Qtr 1
+Condiments,Vegie-spread,$263.40,Qtr 2
+Condiments,Vegie-spread,$842.88,Qtr 3
+Condiments,Vegie-spread,"$2,590.10",Qtr 4
+Confections,Chocolade,$744.60,Qtr 1
+Confections,Chocolade,$162.56,Qtr 2
+Confections,Chocolade,$68.85,Qtr 3
+Confections,Chocolade,$306.00,Qtr 4
+Confections,Gumbär Gummibärchen,"$5,079.60",Qtr 1
+Confections,Gumbär Gummibärchen,"$1,249.20",Qtr 2
+Confections,Gumbär Gummibärchen,"$2,061.17",Qtr 3
+Confections,Gumbär Gummibärchen,"$2,835.68",Qtr 4
+Confections,Maxilaku,"$1,605.60",Qtr 1
+Confections,Maxilaku,$620.00,Qtr 2
+Confections,Maxilaku,$835.00,Qtr 3
+Confections,NuNuCa Nuß-Nougat-Creme,$193.20,Qtr 1
+Confections,NuNuCa Nuß-Nougat-Creme,$865.20,Qtr 2
+Confections,NuNuCa Nuß-Nougat-Creme,$493.50,Qtr 4
+Confections,Pavlova,"$1,685.36",Qtr 1
+Confections,Pavlova,"$2,646.08",Qtr 2
+Confections,Pavlova,"$1,849.70",Qtr 3
+Confections,Pavlova,$999.01,Qtr 4
+Confections,Schoggi Schokolade,"$1,755.00",Qtr 1
+Confections,Schoggi Schokolade,"$5,268.00",Qtr 2
+Confections,Schoggi Schokolade,"$2,195.00",Qtr 3
+Confections,Schoggi Schokolade,"$1,756.00",Qtr 4
+Confections,Scottish Longbreads,"$1,267.50",Qtr 1
+Confections,Scottish Longbreads,"$1,062.50",Qtr 2
+Confections,Scottish Longbreads,$492.50,Qtr 3
+Confections,Scottish Longbreads,"$1,935.00",Qtr 4
+Confections,Sir Rodney's Marmalade,"$4,252.50",Qtr 2
+Confections,Sir Rodney's Marmalade,"$1,360.80",Qtr 3
+Confections,Sir Rodney's Marmalade,"$1,701.00",Qtr 4
+Confections,Sir Rodney's Scones,"$1,418.00",Qtr 1
+Confections,Sir Rodney's Scones,$756.00,Qtr 2
+Confections,Sir Rodney's Scones,"$1,733.00",Qtr 3
+Confections,Sir Rodney's Scones,"$1,434.00",Qtr 4
+Confections,Tarte au sucre,"$4,728.00",Qtr 1
+Confections,Tarte au sucre,"$4,547.92",Qtr 2
+Confections,Tarte au sucre,"$5,472.30",Qtr 3
+Confections,Tarte au sucre,"$6,014.60",Qtr 4
+Confections,Teatime Chocolate Biscuits,$943.89,Qtr 1
+Confections,Teatime Chocolate Biscuits,$349.60,Qtr 2
+Confections,Teatime Chocolate Biscuits,$841.80,Qtr 3
+Confections,Teatime Chocolate Biscuits,$204.70,Qtr 4
+Confections,Valkoinen suklaa,$845.00,Qtr 1
+Confections,Valkoinen suklaa,$385.94,Qtr 3
+Confections,Valkoinen suklaa,$942.50,Qtr 4
+Confections,Zaanse koeken,$817.00,Qtr 1
+Confections,Zaanse koeken,$285.95,Qtr 2
+Confections,Zaanse koeken,$668.80,Qtr 3
+Confections,Zaanse koeken,"$1,159.00",Qtr 4
+Dairy Products,Camembert Pierrot,"$3,329.28",Qtr 1
+Dairy Products,Camembert Pierrot,"$3,989.90",Qtr 2
+Dairy Products,Camembert Pierrot,"$10,273.10",Qtr 3
+Dairy Products,Camembert Pierrot,"$3,060.00",Qtr 4
+Dairy Products,Fløtemysost,"$4,454.80",Qtr 1
+Dairy Products,Fløtemysost,$174.15,Qtr 2
+Dairy Products,Fløtemysost,"$2,541.29",Qtr 3
+Dairy Products,Fløtemysost,"$2,472.50",Qtr 4
+Dairy Products,Geitost,$294.00,Qtr 1
+Dairy Products,Geitost,$242.50,Qtr 2
+Dairy Products,Geitost,$99.50,Qtr 3
+Dairy Products,Geitost,$150.00,Qtr 4
+Dairy Products,Gorgonzola Telino,$487.00,Qtr 1
+Dairy Products,Gorgonzola Telino,"$2,993.12",Qtr 2
+Dairy Products,Gorgonzola Telino,"$1,458.75",Qtr 3
+Dairy Products,Gorgonzola Telino,"$2,681.87",Qtr 4
+Dairy Products,Gudbrandsdalsost,"$2,649.60",Qtr 1
+Dairy Products,Gudbrandsdalsost,"$1,267.20",Qtr 2
+Dairy Products,Gudbrandsdalsost,"$4,473.00",Qtr 3
+Dairy Products,Gudbrandsdalsost,"$5,652.00",Qtr 4
+Dairy Products,Mascarpone Fabioli,"$2,220.80",Qtr 2
+Dairy Products,Mascarpone Fabioli,$448.00,Qtr 4
+Dairy Products,Mozzarella di Giovanni,"$1,973.80",Qtr 1
+Dairy Products,Mozzarella di Giovanni,"$4,488.20",Qtr 2
+Dairy Products,Mozzarella di Giovanni,"$3,027.60",Qtr 3
+Dairy Products,Mozzarella di Giovanni,"$2,349.00",Qtr 4
+Dairy Products,Queso Cabrales,"$1,357.44",Qtr 1
+Dairy Products,Queso Cabrales,"$3,029.25",Qtr 2
+Dairy Products,Queso Cabrales,$504.00,Qtr 3
+Dairy Products,Queso Cabrales,$656.25,Qtr 4
+Dairy Products,Queso Manchego La Pastora,$456.00,Qtr 1
+Dairy Products,Queso Manchego La Pastora,"$1,396.50",Qtr 2
+Dairy Products,Queso Manchego La Pastora,"$1,162.80",Qtr 3
+Dairy Products,Queso Manchego La Pastora,"$5,320.00",Qtr 4
+Dairy Products,Raclette Courdavault,"$9,116.80",Qtr 1
+Dairy Products,Raclette Courdavault,"$7,452.50",Qtr 2
+Dairy Products,Raclette Courdavault,"$5,087.50",Qtr 3
+Dairy Products,Raclette Courdavault,"$11,959.75",Qtr 4
+Grains/Cereals,Filo Mix,$187.60,Qtr 1
+Grains/Cereals,Filo Mix,$742.00,Qtr 2
+Grains/Cereals,Filo Mix,$226.80,Qtr 3
+Grains/Cereals,Filo Mix,$911.75,Qtr 4
+Grains/Cereals,Gnocchi di nonna Alice,"$6,931.20",Qtr 1
+Grains/Cereals,Gnocchi di nonna Alice,"$9,868.60",Qtr 2
+Grains/Cereals,Gnocchi di nonna Alice,"$6,771.60",Qtr 3
+Grains/Cereals,Gnocchi di nonna Alice,"$9,032.60",Qtr 4
+Grains/Cereals,Gustaf's Knäckebröd,$201.60,Qtr 1
+Grains/Cereals,Gustaf's Knäckebröd,$504.00,Qtr 2
+Grains/Cereals,Gustaf's Knäckebröd,"$3,318.00",Qtr 3
+Grains/Cereals,Gustaf's Knäckebröd,$210.00,Qtr 4
+Grains/Cereals,Ravioli Angelo,$499.20,Qtr 1
+Grains/Cereals,Ravioli Angelo,$87.75,Qtr 2
+Grains/Cereals,Ravioli Angelo,$585.00,Qtr 3
+Grains/Cereals,Ravioli Angelo,$984.75,Qtr 4
+Grains/Cereals,Singaporean Hokkien Fried Mee,$985.60,Qtr 1
+Grains/Cereals,Singaporean Hokkien Fried Mee,$912.80,Qtr 2
+Grains/Cereals,Singaporean Hokkien Fried Mee,"$2,307.20",Qtr 3
+Grains/Cereals,Singaporean Hokkien Fried Mee,$978.60,Qtr 4
+Grains/Cereals,Tunnbröd,$979.20,Qtr 1
+Grains/Cereals,Tunnbröd,$778.50,Qtr 2
+Grains/Cereals,Tunnbröd,$423.00,Qtr 3
+Grains/Cereals,Tunnbröd,$396.00,Qtr 4
+Grains/Cereals,Wimmers gute Semmelknödel,"$2,912.70",Qtr 1
+Grains/Cereals,Wimmers gute Semmelknödel,"$1,735.65",Qtr 2
+Grains/Cereals,Wimmers gute Semmelknödel,"$1,679.12",Qtr 3
+Grains/Cereals,Wimmers gute Semmelknödel,$798.00,Qtr 4
+Meat/Poultry,Alice Mutton,"$2,667.60",Qtr 1
+Meat/Poultry,Alice Mutton,"$4,013.10",Qtr 2
+Meat/Poultry,Alice Mutton,"$3,900.00",Qtr 3
+Meat/Poultry,Alice Mutton,"$6,000.15",Qtr 4
+Meat/Poultry,Mishi Kobe Niku,"$1,396.80",Qtr 1
+Meat/Poultry,Mishi Kobe Niku,"$1,319.20",Qtr 2
+Meat/Poultry,Mishi Kobe Niku,"$4,219.50",Qtr 4
+Meat/Poultry,Pâté chinois,"$5,710.08",Qtr 1
+Meat/Poultry,Pâté chinois,"$1,316.40",Qtr 2
+Meat/Poultry,Pâté chinois,$864.00,Qtr 3
+Meat/Poultry,Pâté chinois,$936.00,Qtr 4
+Meat/Poultry,Perth Pasties,"$5,154.85",Qtr 1
+Meat/Poultry,Perth Pasties,"$2,099.20",Qtr 2
+Meat/Poultry,Perth Pasties,"$1,500.60",Qtr 3
+Meat/Poultry,Perth Pasties,"$4,029.48",Qtr 4
+Meat/Poultry,Thüringer Rostbratwurst,"$5,702.40",Qtr 1
+Meat/Poultry,Thüringer Rostbratwurst,"$4,456.44",Qtr 2
+Meat/Poultry,Thüringer Rostbratwurst,"$8,912.88",Qtr 3
+Meat/Poultry,Thüringer Rostbratwurst,"$14,037.79",Qtr 4
+Meat/Poultry,Tourtière,$966.42,Qtr 1
+Meat/Poultry,Tourtière,$490.21,Qtr 2
+Meat/Poultry,Tourtière,$666.03,Qtr 3
+Meat/Poultry,Tourtière,$978.93,Qtr 4
+Produce,Longlife Tofu,$360.00,Qtr 1
+Produce,Longlife Tofu,$128.00,Qtr 2
+Produce,Longlife Tofu,$400.00,Qtr 4
+Produce,Manjimup Dried Apples,"$1,411.92",Qtr 1
+Produce,Manjimup Dried Apples,"$8,384.60",Qtr 2
+Produce,Manjimup Dried Apples,"$1,855.00",Qtr 3
+Produce,Manjimup Dried Apples,"$11,898.50",Qtr 4
+Produce,Rössle Sauerkraut,"$4,105.92",Qtr 1
+Produce,Rössle Sauerkraut,"$3,310.56",Qtr 2
+Produce,Rössle Sauerkraut,"$1,881.00",Qtr 3
+Produce,Rössle Sauerkraut,"$3,556.80",Qtr 4
+Produce,Tofu,"$2,018.10",Qtr 1
+Produce,Tofu,"$2,185.50",Qtr 2
+Produce,Tofu,"$1,866.97",Qtr 3
+Produce,Tofu,$470.81,Qtr 4
+Produce,Uncle Bob's Organic Dried Pears,"$1,084.80",Qtr 1
+Produce,Uncle Bob's Organic Dried Pears,"$1,575.00",Qtr 2
+Produce,Uncle Bob's Organic Dried Pears,"$2,700.00",Qtr 3
+Produce,Uncle Bob's Organic Dried Pears,"$3,826.50",Qtr 4
+Seafood,Boston Crab Meat,"$1,474.41",Qtr 1
+Seafood,Boston Crab Meat,"$2,272.00",Qtr 2
+Seafood,Boston Crab Meat,"$3,887.92",Qtr 3
+Seafood,Boston Crab Meat,"$2,162.00",Qtr 4
+Seafood,Carnarvon Tigers,"$1,500.00",Qtr 1
+Seafood,Carnarvon Tigers,"$2,362.50",Qtr 2
+Seafood,Carnarvon Tigers,"$7,100.00",Qtr 3
+Seafood,Carnarvon Tigers,"$4,987.50",Qtr 4
+Seafood,Escargots de Bourgogne,$265.00,Qtr 2
+Seafood,Escargots de Bourgogne,"$1,393.90",Qtr 3
+Seafood,Escargots de Bourgogne,$417.38,Qtr 4
+Seafood,Gravad lax,$208.00,Qtr 1
+Seafood,Gravad lax,$421.20,Qtr 2
+Seafood,Ikura,"$1,215.20",Qtr 1
+Seafood,Ikura,$533.20,Qtr 2
+Seafood,Ikura,"$3,747.90",Qtr 3
+Seafood,Ikura,"$3,323.20",Qtr 4
+Seafood,Inlagd Sill,$68.40,Qtr 1
+Seafood,Inlagd Sill,"$2,698.00",Qtr 2
+Seafood,Inlagd Sill,"$2,199.25",Qtr 3
+Seafood,Inlagd Sill,"$1,928.50",Qtr 4
+Seafood,Jack's New England Clam Chowder,$385.00,Qtr 1
+Seafood,Jack's New England Clam Chowder,"$1,242.52",Qtr 2
+Seafood,Jack's New England Clam Chowder,$468.51,Qtr 3
+Seafood,Jack's New England Clam Chowder,"$2,542.77",Qtr 4
+Seafood,Konbu,$61.44,Qtr 1
+Seafood,Konbu,$168.00,Qtr 2
+Seafood,Konbu,$469.50,Qtr 3
+Seafood,Konbu,$60.00,Qtr 4
+Seafood,Nord-Ost Matjeshering,"$1,308.24",Qtr 1
+Seafood,Nord-Ost Matjeshering,"$1,838.19",Qtr 2
+Seafood,Nord-Ost Matjeshering,$815.54,Qtr 3
+Seafood,Nord-Ost Matjeshering,"$1,922.33",Qtr 4
+Seafood,Röd Kaviar,$216.00,Qtr 1
+Seafood,Röd Kaviar,$714.00,Qtr 2
+Seafood,Röd Kaviar,"$1,646.25",Qtr 3
+Seafood,Röd Kaviar,$941.25,Qtr 4
+Seafood,Røgede sild,$205.20,Qtr 1
+Seafood,Røgede sild,"$1,007.00",Qtr 2
+Seafood,Røgede sild,$190.00,Qtr 3
+Seafood,Røgede sild,"$1,953.67",Qtr 4
+Seafood,Spegesild,$803.52,Qtr 1
+Seafood,Spegesild,$91.80,Qtr 2
+Seafood,Spegesild,"$1,504.80",Qtr 3
+Seafood,Spegesild,$823.20,Qtr 4
