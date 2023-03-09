@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -41,6 +41,7 @@ async function run() {
     const database = client.db("Texium_Migration");
     const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
+    const postTestData = database.collection("testing");
 
     app.use("/static", express.static("uploads"));
 
@@ -123,6 +124,34 @@ async function run() {
       const cursor = users.find(query);
       const userInfo = await cursor.toArray();
       response.send(userInfo);
+    });
+
+    app.get("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const user = await users.findOne(query);
+      res.send(user);
+    });
+    //Delete Api
+   app.delete('/users/:id', async(req, res)=>{
+    const id = req.params.id;
+    const query = {_id:ObjectId(id)};
+    const result = await users.deleteOne(query);
+    res.send(result);
+   })
+    //Post the Data into testing
+
+    app.get("/testing", async (req, res) => {
+      const query = {};
+      const cursor = postTestData.find(query);
+      const allTesting = await cursor.toArray();
+      res.send(allTesting);
+    });
+
+    app.post("/testing", async (req, res) => {
+      const newAllTesting = req.body;
+      const allTesting = await postTestData.insertOne(newAllTesting);
+      res.send(allTesting);
     });
 
     console.log("Connected Before You Asked!");
