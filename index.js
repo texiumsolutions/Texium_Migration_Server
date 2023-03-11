@@ -129,17 +129,20 @@ async function run() {
     app.get("/users/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
-      const user = await users.findOne(query);
-      res.send(user);
+      const userInfo = await users.findOne(query);
+      res.send(userInfo);
     });
     //Delete Api
-   app.delete('/users/:id', async(req, res)=>{
+    app.delete('/users/:id', async(req, res)=>{
     const id = req.params.id;
     const query = {_id:ObjectId(id)};
     const result = await users.deleteOne(query);
     res.send(result);
    })
-    //Post the Data into testing
+   
+
+
+    //Post, get & delete Data into testing
 
     app.get("/testing", async (req, res) => {
       const query = {};
@@ -153,6 +156,24 @@ async function run() {
       const allTesting = await postTestData.insertOne(newAllTesting);
       res.send(allTesting);
     });
+
+
+
+    app.get("/testing/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const allTesting = await postTestData.findOne(query);
+      res.send(allTesting);
+    });
+
+    
+
+    app.delete('/testing/:id', async(req, res)=>{
+      const id = req.params.id;
+      const query = {_id:ObjectId(id)};
+      const result = await users.deleteOne(query);
+      res.send(result);
+     })
 
     console.log("Connected Before You Asked!");
   } finally {
