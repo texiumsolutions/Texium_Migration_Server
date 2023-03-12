@@ -166,14 +166,20 @@ async function run() {
       res.send(allTesting);
     });
 
-    
-
     app.delete('/testing/:id', async(req, res)=>{
       const id = req.params.id;
       const query = {_id:ObjectId(id)};
-      const result = await users.deleteOne(query);
+      const result = await postTestData.deleteOne(query);
       res.send(result);
-     })
+    });
+    
+
+    // app.delete('/testing/:id', async(req, res)=>{
+    //   const id = req.params.id;
+    //   const query = {_id:ObjectId(id)};
+    //   const result = await postTestData.deleteOne(query);
+    //   res.send(result);
+    // })
 
     console.log("Connected Before You Asked!");
   } finally {
