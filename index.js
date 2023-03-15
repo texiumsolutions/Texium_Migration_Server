@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -41,6 +41,7 @@ async function run() {
     const database = client.db("Texium_Migration");
     const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
+    const testing = database.collection("testing");
 
     app.use("/static", express.static("uploads"));
 
@@ -123,6 +124,22 @@ async function run() {
       const cursor = users.find(query);
       const userInfo = await cursor.toArray();
       response.send(userInfo);
+    });
+
+    // Get all the data of testing
+    app.get("/testing", async (request, response) => {
+      const query = {};
+      const cursor = testing.find(query);
+      const testingInfo = await cursor.toArray();
+      response.send(testingInfo);
+    });
+
+    app.delete("/testing/:id", async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await testing.deleteOne(query);
+      console.log(result);
+      response.send(result);
     });
 
     console.log("Connected Before You Asked!");
