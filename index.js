@@ -1,4 +1,5 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const bodyParser = require("body-parser");
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -26,6 +27,7 @@ const upload = multer({
 });
 
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 
 const uri =
@@ -146,7 +148,16 @@ async function run() {
       // console.log(result);
       // response.send(result);
 
-    // });
+    // Get single data
+    app.get("/testing/:id" , async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await testing.findOne(query);
+      console.log(result);
+      response.json(result);
+    })
+
+    // Delete single data
     app.delete("/testing/:id", async (request, response) => {
       const id = request.params.id;
       const query = { _id: new ObjectId(id) };
