@@ -136,6 +136,13 @@ async function run() {
       response.send(testingInfo);
     });
 
+    // Post data 
+    app.post("/testing", async (request, response) => {
+      const newTesting = request.body;
+      const testingInfo = await testing.insertOne(newTesting);
+      response.send(testingInfo);
+    });
+
     // Get single data
     app.get("/testing/:id" , async (request, response) => {
       const id = request.params.id;
