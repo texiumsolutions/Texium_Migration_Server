@@ -144,34 +144,34 @@ async function run() {
 
     //Post, get & delete Data into testing
 
-    app.get("/testing", async (req, res) => {
-      const query = {};
-      const cursor = postTestData.find(query);
-      const allTesting = await cursor.toArray();
-      res.send(allTesting);
-    });
+    // app.get("/testing", async (req, res) => {
+    //   const query = {};
+    //   const cursor = postTestData.find(query);
+    //   const allTesting = await cursor.toArray();
+    //   res.send(allTesting);
+    // });
 
-    app.post("/testing", async (req, res) => {
-      const newAllTesting = req.body;
-      const allTesting = await postTestData.insertOne(newAllTesting);
-      res.send(allTesting);
-    });
+    // app.post("/testing", async (req, res) => {
+    //   const newAllTesting = req.body;
+    //   const allTesting = await postTestData.insertOne(newAllTesting);
+    //   res.send(allTesting);
+    // });
 
 
 
-    app.get("/testing/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: ObjectId(id) };
-      const allTesting = await postTestData.findOne(query);
-      res.send(allTesting);
-    });
+    // app.get("/testing/:id", async (req, res) => {
+    //   const id = req.params.id;
+    //   const query = { _id: ObjectId(id) };
+    //   const allTesting = await postTestData.findOne(query);
+    //   res.send(allTesting);
+    // });
 
-    app.delete('/testing/:id', async(req, res)=>{
-      const id = req.params.id;
-      const query = {_id:ObjectId(id)};
-      const result = await postTestData.deleteOne(query);
-      res.send(result);
-    });
+    // app.delete('/testing/:id', async(req, res)=>{
+    //   const id = req.params.id;
+    //   const query = {_id:ObjectId(id)};
+    //   const result = await postTestData.deleteOne(query);
+    //   res.send(result);
+    // });
     
 
     // app.delete('/testing/:id', async(req, res)=>{
