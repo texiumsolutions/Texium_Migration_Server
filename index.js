@@ -41,7 +41,7 @@ async function run() {
     const database = client.db("Texium_Migration");
     const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
-    const postTestData = database.collection("testing");
+    const testing = database.collection("testing");
 
     app.use("/static", express.static("uploads"));
 
@@ -126,60 +126,28 @@ async function run() {
       response.send(userInfo);
     });
 
-    app.get("/users/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: ObjectId(id) };
-      const userInfo = await users.findOne(query);
-      res.send(userInfo);
+    // Get all the data of testing
+
+ 
+    app.get("/testing", async (request, response) => {
+      const query = {};
+      const cursor = testing.find(query);
+      const testingInfo = await cursor.toArray();
+      response.send(testingInfo);
     });
-    //Delete Api
-    app.delete('/users/:id', async(req, res)=>{
-    const id = req.params.id;
-    const query = {_id:ObjectId(id)};
-    const result = await users.deleteOne(query);
-    res.send(result);
-   })
-   
+    app.post('/testing', async (request, response) => {
+      const newTesting = request.body;
+      const testingInfo = await testing.insertOne(newTesting);
+      response.send(testingInfo);
+  });
 
-
-    //Post, get & delete Data into testing
-
-    // app.get("/testing", async (req, res) => {
-    //   const query = {};
-    //   const cursor = postTestData.find(query);
-    //   const allTesting = await cursor.toArray();
-    //   res.send(allTesting);
-    // });
-
-    // app.post("/testing", async (req, res) => {
-    //   const newAllTesting = req.body;
-    //   const allTesting = await postTestData.insertOne(newAllTesting);
-    //   res.send(allTesting);
-    // });
-
-
-
-    // app.get("/testing/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const query = { _id: ObjectId(id) };
-    //   const allTesting = await postTestData.findOne(query);
-    //   res.send(allTesting);
-    // });
-
-    // app.delete('/testing/:id', async(req, res)=>{
-    //   const id = req.params.id;
-    //   const query = {_id:ObjectId(id)};
-    //   const result = await postTestData.deleteOne(query);
-    //   res.send(result);
-    // });
-    
-
-    // app.delete('/testing/:id', async(req, res)=>{
-    //   const id = req.params.id;
-    //   const query = {_id:ObjectId(id)};
-    //   const result = await postTestData.deleteOne(query);
-    //   res.send(result);
-    // })
+    app.delete("/testing/:id", async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await testing.deleteOne(query);
+      console.log(result);
+      response.send(result);
+    });
 
     console.log("Connected Before You Asked!");
   } finally {
