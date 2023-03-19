@@ -129,12 +129,24 @@ async function run() {
     });
 
     // Get all the data of testing
+
     app.get("/testing", async (request, response) => {
       const query = {};
       const cursor = testing.find(query);
       const testingInfo = await cursor.toArray();
       response.send(testingInfo);
     });
+    app.post("/testing", async (request, response) => {
+      const newTesting = request.body;
+      const testingInfo = await testing.insertOne(newTesting);
+      response.send(testingInfo);
+    });
+    // app.get("/testing/:id", async (request, response) => {
+      // const id = request.params.id;
+      // const query = { _id: ObjectId(id) };
+      // const result = await testing.findOne(query);
+      // console.log(result);
+      // response.send(result);
 
     // Post data 
     app.post("/testing", async (request, response) => {
