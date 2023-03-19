@@ -6,6 +6,7 @@ const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const xlsx = require("xlsx");
+const { request } = require("http");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -162,6 +163,23 @@ async function run() {
       const result = await testing.findOne(query);
       console.log(result);
       response.json(result);
+    })
+
+    //Update User 
+    app.put('/testing/:id', async(request, response)=>{
+      const id = request.params.id;
+      const updatedUser = req.body;
+      const filter = {_id: ObjectId(id)};
+      const options = {upsert: true};
+      const updatedDoc = {
+        $set:{
+          fileName: updatedUser.fileName,
+          dropdown: updatedUser.dropdown,
+          description: updatedUser.description
+        }
+      };
+     const result = await testing.updateOne(filter, updatedDoc, options);
+     res.send(result);
     })
 
     // Delete single data
