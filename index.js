@@ -112,6 +112,39 @@ async function run() {
       );
     });
 
+    // File Uploader
+    app.post('/testing', (req, res) => {
+      const path = req.body.path;
+      console.log(path);
+      fs.readdir(path, (err, files) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          files.forEach((file) => {
+            fs.readFile(`${path}/${file}`, (err, data) => {
+              if (err) {
+                console.log(err);
+              } else {
+                const MyModel = mongoose.model('MyModel', new mongoose.Schema({
+                  filename: String,
+                  contents: Buffer,
+                }));
+                const myModel = new MyModel({ filename: file, contents: data });
+                myModel.save((err) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.log(`Uploaded ${file}`);
+                  }
+                });
+              }
+            });
+          });
+          res.send('Upload complete');
+        }
+      });
+    });
+
     // Get all the data of files
     app.get("/sourceFileInfo", async (request, response) => {
       const query = {};
@@ -136,11 +169,11 @@ async function run() {
       const testingInfo = await cursor.toArray();
       response.send(testingInfo);
     });
-    app.post("/testing", async (request, response) => {
-      const newTesting = request.body;
-      const testingInfo = await testing.insertOne(newTesting);
-      response.send(testingInfo);
-    });
+    // app.post("/testing", async (request, response) => {
+    //   const newTesting = request.body;
+    //   const testingInfo = await testing.insertOne(newTesting);
+    //   response.send(testingInfo);
+    // });
     // app.get("/testing/:id", async (request, response) => {
       // const id = request.params.id;
       // const query = { _id: ObjectId(id) };
