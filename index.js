@@ -45,6 +45,8 @@ async function run() {
     const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
     const testing = database.collection("testing");
+    const objectsCollection = database.collection("sourceObjects");
+    const errorsCollection = database.collection("errorsObjects");
 
     app.use("/static", express.static("uploads"));
 
@@ -121,6 +123,21 @@ async function run() {
       response.send(fileInfo);
     });
 
+    // Get all the data of files
+    app.get("/sourceObjects", async (request, response) => {
+      const query = {};
+      const cursor = objectsCollection.find(query);
+      const objectInfo = await cursor.toArray();
+      response.send(objectInfo);
+    });
+       // Get all the data of files
+       app.get("/errorsObjects", async (request, response) => {
+        const query = {};
+        const cursor = errorsCollection.find(query);
+        const errorsInfo = await cursor.toArray();
+        response.send(errorsInfo);
+      });
+
     // Get all the data of users
     app.get("/users", async (request, response) => {
       const query = {};
@@ -166,21 +183,21 @@ async function run() {
     })
 
     //Update User 
-    app.put('/testing/:id', async(request, response)=>{
-      const id = request.params.id;
-      const updatedUser = req.body;
-      const filter = {_id: ObjectId(id)};
-      const options = {upsert: true};
-      const updatedDoc = {
-        $set:{
-          fileName: updatedUser.fileName,
-          dropdown: updatedUser.dropdown,
-          description: updatedUser.description
-        }
-      };
-     const result = await testing.updateOne(filter, updatedDoc, options);
-     res.send(result);
-    })
+    // app.put('/testing/:id', async(request, response)=>{
+    //   const detailsId = request.params.detailsId;
+    //   const updatedUser = req.body;
+    //   const filter = {_id: ObjectId(detailsId)};
+    //   const options = {upsert: true};
+    //   const updatedDoc = {
+    //     $set:{
+    //       fileName: updatedUser.fileName,
+    //       dropdown: updatedUser.dropdown,
+    //       description: updatedUser.description
+    //     }
+    //   };
+    //  const result = await testing.updateOne(filter, updatedDoc, options);
+    //  res.send(result);
+    // })
 
     // Delete single data
     app.delete("/testing/:id", async (request, response) => {
