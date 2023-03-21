@@ -1,11 +1,34 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const bodyParser = require("body-parser");
 const express = require("express");
+const multer = require("multer");
+const path = require("path");
 const cors = require("cors");
-const { response } = require("express");
+const fs = require("fs");
+const xlsx = require("xlsx");
+const { request } = require("http");
 const app = express();
 const port = process.env.PORT || 5000;
 
+const upload = multer({
+  dest: "./uploads/",
+  fileFilter: (req, file, cb) => {
+    const allowedExtensions = [".xlsx", ".csv"];
+    const ext = path.extname(file.originalname);
+    if (allowedExtensions.includes(ext)) {
+      cb(null, true);
+    } else {
+      cb(
+        new Error(
+          "Only Excel files with the .xlsx & .csv extension are allowed!"
+        )
+      );
+    }
+  },
+});
+
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 
 const uri =
@@ -19,14 +42,170 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     const database = client.db("Texium_Migration");
-    const users = database.collection("user");
+    const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
+    const testing = database.collection("testing");
+    const objectsCollection = database.collection("sourceObjects");
+    const errorsCollection = database.collection("errorsObjects");
 
+    app.use("/static", express.static("uploads"));
+
+    // File Upload
+    app.post("/uploadFile", upload.single("avater"), (request, response) => {
+      let newFileName = Date.now() + ".csv";
+
+      fs.rename(
+        `./uploads/${request.file.filename}`,
+        `./uploads/${newFileName}`,
+        function () {
+          // Read the Excel file and convert it to CSV format
+          const workbook = xlsx.readFile(`./uploads/${newFileName}`);
+          const sheetName = workbook.SheetNames[0];
+          const csv = xlsx.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+
+          // Write the CSV data to a new file
+          const csvFileName = newFileName.replace(".xlsx", ".csv");
+          fs.writeFile(`./uploads/${csvFileName}`, csv, (err) => {
+            if (err) {
+              console.log(err);
+              response.status(500).json({
+                success: false,
+                message: "Unable to convert the file.",
+              });
+            } else {
+              // Read the CSV data and add it to the database
+              fs.readFile(`./uploads/${csvFileName}`, (err, data) => {
+                if (err) {
+                  console.log(err);
+                  response.status(500).json({
+                    success: false,
+                    message: "Unable to read the file.",
+                  });
+                } else {
+                  const fileId = new Date().getTime().toString();
+
+                  const fileData = {
+                    _id: fileId,
+                    fileName: request.file.originalname,
+                    newFileName: csvFileName,
+                    filePath: `./uploads/${csvFileName}`,
+                    createdAt: new Date(),
+                    data: xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]),
+                  };
+                  // Add the file information and data to the database
+                  fileCollection.insertOne(fileData, function (err, res) {
+                    if (err) {
+                      console.log(err);
+                      response.status(500).json({
+                        success: false,
+                        message: "Unable to add file to the database.",
+                      });
+                    } else {
+                      response.status(200).json({
+                        success: true,
+                        message: "File uploaded successfully!",
+                      });
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+      );
+    });
+
+    // Get all the data of files
     app.get("/sourceFileInfo", async (request, response) => {
       const query = {};
       const cursor = fileCollection.find(query);
       const fileInfo = await cursor.toArray();
       response.send(fileInfo);
+    });
+
+    // Get all the data of files
+    app.get("/sourceObjects", async (request, response) => {
+      const query = {};
+      const cursor = objectsCollection.find(query);
+      const objectInfo = await cursor.toArray();
+      response.send(objectInfo);
+    });
+       // Get all the data of files
+       app.get("/errorsObjects", async (request, response) => {
+        const query = {};
+        const cursor = errorsCollection.find(query);
+        const errorsInfo = await cursor.toArray();
+        response.send(errorsInfo);
+      });
+
+    // Get all the data of users
+    app.get("/users", async (request, response) => {
+      const query = {};
+      const cursor = users.find(query);
+      const userInfo = await cursor.toArray();
+      response.send(userInfo);
+    });
+
+    // Get all the data of testing
+
+    app.get("/testing", async (request, response) => {
+      const query = {};
+      const cursor = testing.find(query);
+      const testingInfo = await cursor.toArray();
+      response.send(testingInfo);
+    });
+    app.post("/testing", async (request, response) => {
+      const newTesting = request.body;
+      const testingInfo = await testing.insertOne(newTesting);
+      response.send(testingInfo);
+    });
+    // app.get("/testing/:id", async (request, response) => {
+      // const id = request.params.id;
+      // const query = { _id: ObjectId(id) };
+      // const result = await testing.findOne(query);
+      // console.log(result);
+      // response.send(result);
+
+    // Post data 
+    app.post("/testing", async (request, response) => {
+      const newTesting = request.body;
+      const testingInfo = await testing.insertOne(newTesting);
+      response.send(testingInfo);
+    });
+
+    // Get single data
+    app.get("/testing/:id" , async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await testing.findOne(query);
+      console.log(result);
+      response.json(result);
+    })
+
+    //Update User 
+    // app.put('/testing/:id', async(request, response)=>{
+    //   const detailsId = request.params.detailsId;
+    //   const updatedUser = req.body;
+    //   const filter = {_id: ObjectId(detailsId)};
+    //   const options = {upsert: true};
+    //   const updatedDoc = {
+    //     $set:{
+    //       fileName: updatedUser.fileName,
+    //       dropdown: updatedUser.dropdown,
+    //       description: updatedUser.description
+    //     }
+    //   };
+    //  const result = await testing.updateOne(filter, updatedDoc, options);
+    //  res.send(result);
+    // })
+
+    // Delete single data
+    app.delete("/testing/:id", async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await testing.deleteOne(query);
+      console.log(result);
+      response.send(result);
     });
 
     console.log("Connected Before You Asked!");
@@ -35,6 +214,15 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+// Default Error
+app.use((err, req, res, next) => {
+  if (err) {
+    res.status(500).send(err.message);
+  } else {
+    res.send("Uploaded Successfully!");
+  }
+});
 
 app.get("/", (request, response) => {
   response.send("Running All The Time");
