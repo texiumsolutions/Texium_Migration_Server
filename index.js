@@ -1,11 +1,12 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const fs = require("fs");
 const xlsx = require("xlsx");
+const fs = require("fs");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -112,37 +113,30 @@ async function run() {
       );
     });
 
-    // File Uploader
-    app.post('/testing', (req, res) => {
-      const path = req.body.path;
-      console.log(path);
-      fs.readdir(path, (err, files) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          files.forEach((file) => {
-            fs.readFile(`${path}/${file}`, (err, data) => {
-              if (err) {
-                console.log(err);
-              } else {
-                const MyModel = mongoose.model('MyModel', new mongoose.Schema({
-                  filename: String,
-                  contents: Buffer,
-                }));
-                const myModel = new MyModel({ filename: file, contents: data });
-                myModel.save((err) => {
-                  if (err) {
-                    console.log(err);
-                  } else {
-                    console.log(`Uploaded ${file}`);
-                  }
-                });
-              }
-            });
-          });
-          res.send('Upload complete');
-        }
+    // Handle the POST request to upload file details
+    app.post("/upload", (req, res) => {
+      // Extract the directory path from the HTTP POST request
+      const directoryPath = req.body.directoryPath;
+
+      // Scan the files under the given directory path
+      const files = fs.readdirSync(directoryPath).map((file) => {
+        const filePath = path.join(directoryPath, file);
+        const stats = fs.statSync(filePath);
+        const fileExtension = path.extname(filePath).substr(1);
+        const modifiedDate = stats.mtime;
+        const createdDate = stats.birthtime;
+        return {
+          name: file,
+          size: stats.size,
+          type: fileExtension,
+          modifiedDate: modifiedDate,
+          createdDate: createdDate,
+        };
       });
+      console.log(files);
+
+      // Send the file names and sizes back to the React component
+      res.json({ files });
     });
 
     // Get all the data of files
@@ -162,26 +156,14 @@ async function run() {
     });
 
     // Get all the data of testing
-
     app.get("/testing", async (request, response) => {
       const query = {};
       const cursor = testing.find(query);
       const testingInfo = await cursor.toArray();
       response.send(testingInfo);
     });
-    // app.post("/testing", async (request, response) => {
-    //   const newTesting = request.body;
-    //   const testingInfo = await testing.insertOne(newTesting);
-    //   response.send(testingInfo);
-    // });
-    // app.get("/testing/:id", async (request, response) => {
-      // const id = request.params.id;
-      // const query = { _id: ObjectId(id) };
-      // const result = await testing.findOne(query);
-      // console.log(result);
-      // response.send(result);
 
-    // Post data 
+    // Post data
     app.post("/testing", async (request, response) => {
       const newTesting = request.body;
       const testingInfo = await testing.insertOne(newTesting);
@@ -189,18 +171,49 @@ async function run() {
     });
 
     // Get single data
-    app.get("/testing/:id" , async (request, response) => {
+    app.get("/testing/:id", async (request, response) => {
       const id = request.params.id;
-      const query = { _id: new ObjectId(id) };
+      const query = { _id: id };
       const result = await testing.findOne(query);
       console.log(result);
       response.json(result);
-    })
+    });
+
+    // update single data
+    app.put("/testing/:id", async (request, response) => {
+      const id = request.params.id;
+      const updateData = request.body;
+      console.log(updateData);
+      const filter = { _id: id };
+      console.log(filter);
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: {
+          profileName: updateData.profileName,
+          Description: updateData.Description,
+          normalDate: updateData.normalDate,
+          Run_Number: updateData.Run_Number,
+          Type: updateData.Type,
+          id: updateData.id,
+        },
+      };
+      // console.log(updateDoc);
+      try {
+        const result = await testing.updateMany(filter, updateDoc, options);
+        console.log(
+          `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`
+        );
+        response.send(result);
+      } catch (error) {
+        console.error("Update failed:", error);
+        response.status(500).send(error);
+      }
+    });
 
     // Delete single data
     app.delete("/testing/:id", async (request, response) => {
       const id = request.params.id;
-      const query = { _id: new ObjectId(id) };
+      const query = { _id: id };
       const result = await testing.deleteOne(query);
       console.log(result);
       response.send(result);
