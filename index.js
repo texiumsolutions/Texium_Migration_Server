@@ -133,9 +133,8 @@ async function run() {
           createdDate: createdDate,
         };
       });
-      console.log(files);
 
-      // Send the file names and sizes back to the React component
+      // Send the file data to the React component
       res.json({ files });
     });
 
