@@ -134,6 +134,17 @@ async function run() {
         };
       });
 
+      const data = {
+        directoryPath: directoryPath,
+        files: files,
+        uploadedAt: new Date(),
+      };
+
+      testing.insertOne(data, (err, result) => {
+        if (err) throw err;
+        console.log("Data saved to MongoDB");
+      });
+
       // Send the file data to the React component
       res.json({ files });
     });
