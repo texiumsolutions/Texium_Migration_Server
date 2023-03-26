@@ -39,6 +39,17 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
+const fileSchema = new mongoose.Schema({
+  File_Name: String,
+  File_Type: String,
+  Description: String,
+  Directory_Path: String,
+  Files: Array,
+  Uploaded_At: Date,
+});
+const File = mongoose.model("File", fileSchema);
+
+
 async function run() {
   try {
     const database = client.db("Texium_Migration");
@@ -117,6 +128,9 @@ async function run() {
     app.post("/upload", (req, res) => {
       // Extract the directory path from the HTTP POST request
       const directoryPath = req.body.directoryPath;
+      const selectedName = req.body.selectedName;
+      const fileType = req.body.selectedValue;
+      const description = req.body.value;
 
       // Scan the files under the given directory path
       const files = fs.readdirSync(directoryPath).map((file) => {
@@ -135,14 +149,16 @@ async function run() {
       });
 
       const data = {
-        directoryPath: directoryPath,
-        files: files,
-        uploadedAt: new Date(),
+        File_Name: selectedName,
+        File_Type: fileType,
+        Description: description,
+        Directory_Path: directoryPath,
+        Files: files,
+        Uploaded_At: new Date(),
       };
 
       testing.insertOne(data, (err, result) => {
         if (err) throw err;
-        console.log("Data saved to MongoDB");
       });
 
       // Send the file data to the React component
