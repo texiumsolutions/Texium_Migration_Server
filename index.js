@@ -131,6 +131,7 @@ async function run() {
       const selectedName = req.body.selectedName;
       const fileType = req.body.selectedValue;
       const description = req.body.value;
+      const runNumber = 0;
 
       // Scan the files under the given directory path
       const files = fs.readdirSync(directoryPath).map((file) => {
@@ -150,11 +151,12 @@ async function run() {
 
       const data = {
         File_Name: selectedName,
-        File_Type: fileType,
+        Source_Type: fileType,
         Description: description,
         Directory_Path: directoryPath,
-        Files: files,
+        Run_Number: runNumber,
         Uploaded_At: new Date(),
+        Files: files,
       };
 
       testing.insertOne(data, (err, result) => {
@@ -199,7 +201,7 @@ async function run() {
     // Get single data
     app.get("/testing/:id", async (request, response) => {
       const id = request.params.id;
-      const query = { _id: id };
+      const query = { _id: new ObjectId(id) };
       const result = await testing.findOne(query);
       console.log(result);
       response.json(result);
