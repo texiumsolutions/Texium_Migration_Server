@@ -11,6 +11,8 @@ const fs = require("fs");
 const app = express();
 const port = process.env.PORT || 5000;
 
+require('dotenv').config()
+
 const upload = multer({
   dest: "./uploads/",
   fileFilter: (req, file, cb) => {
@@ -33,7 +35,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 const uri =
-  "mongodb+srv://texium_migration:CF4SLRt0yX0mKKha@cluster.mb6jarb.mongodb.net/?retryWrites=true&w=majority";
+  `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster.mb6jarb.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
