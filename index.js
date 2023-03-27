@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -6,12 +7,9 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const xlsx = require("xlsx");
-const { request } = require("http");
 const fs = require("fs");
 const app = express();
-const port = process.env.PORT || 5000;
-
-require('dotenv').config()
+const port = process.env.PORT;
 
 const upload = multer({
   dest: "./uploads/",
@@ -34,8 +32,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-const uri =
-  `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster.mb6jarb.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster.mb6jarb.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -51,7 +48,6 @@ const fileSchema = new mongoose.Schema({
   Uploaded_At: Date,
 });
 const File = mongoose.model("File", fileSchema);
-
 
 async function run() {
   try {
@@ -187,13 +183,13 @@ async function run() {
       const objectInfo = await cursor.toArray();
       response.send(objectInfo);
     });
-       // Get all the data of files
-       app.get("/errorsObjects", async (request, response) => {
-        const query = {};
-        const cursor = errorsCollection.find(query);
-        const errorsInfo = await cursor.toArray();
-        response.send(errorsInfo);
-      });
+    // Get all the data of files
+    app.get("/errorsObjects", async (request, response) => {
+      const query = {};
+      const cursor = errorsCollection.find(query);
+      const errorsInfo = await cursor.toArray();
+      response.send(errorsInfo);
+    });
 
     // Get all the data of users
     app.get("/users", async (request, response) => {
@@ -257,23 +253,6 @@ async function run() {
         response.status(500).send(error);
       }
     });
-
-    //Update User 
-    // app.put('/testing/:id', async(request, response)=>{
-    //   const detailsId = request.params.detailsId;
-    //   const updatedUser = req.body;
-    //   const filter = {_id: ObjectId(detailsId)};
-    //   const options = {upsert: true};
-    //   const updatedDoc = {
-    //     $set:{
-    //       fileName: updatedUser.fileName,
-    //       dropdown: updatedUser.dropdown,
-    //       description: updatedUser.description
-    //     }
-    //   };
-    //  const result = await testing.updateOne(filter, updatedDoc, options);
-    //  res.send(result);
-    // })
 
     // Delete single data
     app.delete("/testing/:id", async (request, response) => {
