@@ -168,14 +168,15 @@ async function run() {
       res.json({ files });
     });
 
-    // Find the data from quary
-    app.post("/uploadMongoDB", (req, res) => {
+    // Find the data from query
+    app.post('/uploadMongoDB', async (req, res) => {
       const inputValue = req.body.inputValue;
       console.log(inputValue);
-
-      const result = testing.find({ inputValue });
+    
+      const result = await testing.find({ Run_Number: 0 }).toArray();
       console.log(result);
-      res.json({ data: docs });
+
+      res.send(result);
     });
 
     // Get all the data of files
