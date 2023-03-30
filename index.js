@@ -169,11 +169,15 @@ async function run() {
     });
 
     // Find the data from query
-    app.post('/uploadMongoDB', async (req, res) => {
+    app.post("/uploadMongoDB", async (req, res) => {
       const inputValue = req.body.inputValue;
-      console.log(inputValue);
-    
-      const result = await testing.find({ Run_Number: 0 }).toArray();
+
+      const something = inputValue.split(": ");
+      const mainQuery = {};
+      mainQuery[something[0].trim()] = something[1].trim();
+
+      console.log(mainQuery);
+      const result = await testing.find( mainQuery ).toArray();
       console.log(result);
 
       res.send(result);
@@ -230,7 +234,6 @@ async function run() {
       const id = request.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await testing.findOne(query);
-      console.log(result);
       response.json(result);
     });
 
@@ -238,9 +241,7 @@ async function run() {
     app.put("/testing/:id", async (request, response) => {
       const id = request.params.id;
       const updateData = request.body;
-      console.log(updateData);
       const filter = { _id: id };
-      console.log(filter);
       const options = { upsert: true };
       const updateDoc = {
         $set: {
@@ -252,7 +253,6 @@ async function run() {
           id: updateData.id,
         },
       };
-      // console.log(updateDoc);
       try {
         const result = await testing.updateMany(filter, updateDoc, options);
         console.log(
@@ -270,7 +270,6 @@ async function run() {
       const id = request.params.id;
       const query = { _id: id };
       const result = await testing.deleteOne(query);
-      console.log(result);
       response.send(result);
     });
 
