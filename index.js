@@ -168,6 +168,17 @@ async function run() {
       res.json({ files });
     });
 
+    // Find the data from query
+    app.post('/uploadMongoDB', async (req, res) => {
+      const inputValue = req.body.inputValue;
+      console.log(inputValue);
+    
+      const result = await testing.find({ Run_Number: 0 }).toArray();
+      console.log(result);
+
+      res.send(result);
+    });
+
     // Get all the data of files
     app.get("/sourceFileInfo", async (request, response) => {
       const query = {};
