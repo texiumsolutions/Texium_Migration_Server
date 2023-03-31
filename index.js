@@ -175,10 +175,8 @@ async function run() {
       const something = inputValue.split(": ");
       const mainQuery = {};
       mainQuery[something[0].trim()] = something[1].trim();
-
-      console.log(mainQuery);
+      
       const result = await testing.find( mainQuery ).toArray();
-      console.log(result);
 
       res.send(result);
     });
