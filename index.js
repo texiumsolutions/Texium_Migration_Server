@@ -55,6 +55,7 @@ async function run() {
     const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
     const testing = database.collection("testing");
+    const newTesting = database.collection("newTesting");
     const objectsCollection = database.collection("sourceObjects");
     const errorsCollection = database.collection("errorsObjects");
 
@@ -169,10 +170,10 @@ async function run() {
     });
 
     // Find the data from query
-    app.post('/uploadMongoDB', async (req, res) => {
+    app.post("/uploadMongoDB", async (req, res) => {
       const inputValue = req.body.inputValue;
       console.log(inputValue);
-    
+
       const result = await testing.find({ Run_Number: 0 }).toArray();
       console.log(result);
 
@@ -272,6 +273,30 @@ async function run() {
       const result = await testing.deleteOne(query);
       console.log(result);
       response.send(result);
+    });
+
+    // Get all the data of Newtesting
+    app.get("/newTesting", async (request, response) => {
+      const query = {};
+      const cursor = newTesting.find(query);
+      const newTestingInfo = await cursor.toArray();
+      response.send(newTestingInfo);
+    });
+
+    // Post data
+    app.post("/newTesting", async (request, response) => {
+      const latestTesting = request.body;
+      const newTestingInfo = await testing.insertOne(latestTesting);
+      response.send(newTestingInfo);
+    });
+
+    // Get single data
+    app.get("/newTesting/:id", async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await newTesting.findOne(query);
+      console.log(result);
+      response.json(result);
     });
 
     console.log("Connected Before You Asked!");
