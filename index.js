@@ -4,12 +4,15 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
 const multer = require("multer");
+const mysql = require("mysql");
 const path = require("path");
 const cors = require("cors");
 const xlsx = require("xlsx");
 const fs = require("fs");
 const app = express();
 const port = process.env.PORT;
+
+const importers_routes = require("./routes/importers");
 
 const upload = multer({
   dest: "./uploads/",
@@ -32,6 +35,27 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
+// ~~~~~~~~~~~~~~~~
+// MySQL connection
+// ~~~~~~~~~~~~~~~~
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "sqluser",
+  password: "password",
+  database: "texium_migration",
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL database:", err);
+  } else {
+    console.log("Connected to MySQL database");
+  }
+});
+
+// ~~~~~~~~~~~~~~~~~~
+// MongoDB Connection
+// ~~~~~~~~~~~~~~~~~~
 const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster.mb6jarb.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -175,8 +199,8 @@ async function run() {
       const something = inputValue.split(": ");
       const mainQuery = {};
       mainQuery[something[0].trim()] = something[1].trim();
-      
-      const result = await testing.find( mainQuery ).toArray();
+
+      const result = await testing.find(mainQuery).toArray();
 
       res.send(result);
     });
@@ -290,6 +314,9 @@ app.use((err, req, res, next) => {
 app.get("/", (request, response) => {
   response.send("Running All The Time");
 });
+
+// Importers Controller
+app.use("/api/sourceFileInfo", importers_routes);
 
 app.listen(port, () => {
   console.log(`I'm Walking in ${port} number street!`);
