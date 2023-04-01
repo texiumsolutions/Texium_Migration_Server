@@ -285,8 +285,8 @@ async function run() {
 
     // Post data
     app.post("/newTesting", async (request, response) => {
-      const latestTesting = request.body;
-      const newTestingInfo = await testing.insertOne(latestTesting);
+      const newTesting = request.body;
+      const newTestingInfo = await testing.insertOne(newTesting);
       response.send(newTestingInfo);
     });
 
