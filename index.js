@@ -56,6 +56,7 @@ async function run() {
     const fileCollection = database.collection("sourceFileInfo");
     const testing = database.collection("testing");
     const newTesting = database.collection("newTesting");
+    const editing = database.collection("editing");
     const objectsCollection = database.collection("sourceObjects");
     const errorsCollection = database.collection("errorsObjects");
 
@@ -275,19 +276,23 @@ async function run() {
       response.send(result);
     });
 
-    // Get all the data of Newtesting
-    app.get("/newTesting", async (request, response) => {
+
+    // EDITING 
+     
+    // Get all the data of Editing
+    app.get("/editing", async (request, response) => {
       const query = {};
-      const cursor = newTesting.find(query);
-      const newTestingInfo = await cursor.toArray();
-      response.send(newTestingInfo);
+      const cursor = editing.find(query);
+      const editingInfo = await cursor.toArray();
+      response.send(editingInfo);
     });
 
     // Post data
-    app.post("/newTesting", async (request, response) => {
-      const newTesting = request.body;
-      const newTestingInfo = await testing.insertOne(newTesting);
-      response.send(newTestingInfo);
+
+    app.post("/editing", async (request, response) => {
+      const newEditing = request.body;
+      const editingInfo = await editing.insertOne(newEditing);
+      response.send(editingInfo);
     });
 
     // Get single data
@@ -295,6 +300,13 @@ async function run() {
       const id = request.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await newTesting.findOne(query);
+      console.log(result);
+      response.json(result);
+    });
+    app.get("/editing/:id", async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await editing.findOne(query);
       console.log(result);
       response.json(result);
     });
