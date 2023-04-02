@@ -79,6 +79,7 @@ async function run() {
     const users = database.collection("users");
     const fileCollection = database.collection("sourceFileInfo");
     const testing = database.collection("testing");
+    const editedData = database.collection("editedData");
     const objectsCollection = database.collection("sourceObjects");
     const errorsCollection = database.collection("errorsObjects");
 
@@ -295,6 +296,30 @@ async function run() {
       response.send(result);
     });
 
+    // Get all the data of Newtesting
+    app.get("/editedData", async (request, response) => {
+      const query = {};
+      const cursor = editedData.find(query);
+      const editedDataInfo = await cursor.toArray();
+      response.send(editedDataInfo);
+    });
+
+    // Post data
+    app.post("/editedData", async (request, response) => {
+      const editedData = request.body;
+      const editedDataInfo = await testing.insertOne(editedData);
+      response.send(editedDataInfo);
+    });
+
+    // Get single data
+    app.get("/editedData/:id", async (request, response) => {
+      const id = request.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await editedData.findOne(query);
+      console.log(result);
+      response.json(result);
+    });
+
     console.log("Connected Before You Asked!");
   } finally {
     // await client.close();
@@ -316,7 +341,7 @@ app.get("/", (request, response) => {
 });
 
 // Importers Controller
-app.use("/api/sourceFileInfo", importers_routes);
+app.use("/api/getEmployee", importers_routes);
 
 app.listen(port, () => {
   console.log(`I'm Walking in ${port} number street!`);
