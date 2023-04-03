@@ -18,6 +18,15 @@ db.connect((err) => {
   }
 });
 
+const postConnectionWithDatabase = (req, res) => {
+  const { ipValue, userNameValue, passwordValue, databaseValue } = req.body
+  console.log(ipValue);
+  console.log(userNameValue);
+  console.log(passwordValue);
+  console.log(databaseValue);
+  // res.send(inputValue);
+};
+
 const getSourceFileInfo = async (req, res) => {
   const sqlSelect = "SELECT * FROM employee;";
   db.query(sqlSelect, (err, result) => {
@@ -26,3 +35,4 @@ const getSourceFileInfo = async (req, res) => {
 };
 
 module.exports = getSourceFileInfo;
+module.exports = postConnectionWithDatabase;

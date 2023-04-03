@@ -12,7 +12,7 @@ const fs = require("fs");
 const app = express();
 const port = process.env.PORT;
 
-const importers_routes = require("./routes/importers");
+const database_routes = require("./routes/addMySQL");
 
 const upload = multer({
   dest: "./uploads/",
@@ -34,24 +34,6 @@ const upload = multer({
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-
-// ~~~~~~~~~~~~~~~~
-// MySQL connection
-// ~~~~~~~~~~~~~~~~
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "sqluser",
-  password: "password",
-  database: "texium_migration",
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to MySQL database:", err);
-  } else {
-    console.log("Connected to MySQL database");
-  }
-});
 
 // ~~~~~~~~~~~~~~~~~~
 // MongoDB Connection
@@ -340,8 +322,8 @@ app.get("/", (request, response) => {
   response.send("Running All The Time");
 });
 
-// Importers Controller
-app.use("/api/getEmployee", importers_routes);
+// Database Connect Controller
+app.use("/api", database_routes);
 
 app.listen(port, () => {
   console.log(`I'm Walking in ${port} number street!`);
